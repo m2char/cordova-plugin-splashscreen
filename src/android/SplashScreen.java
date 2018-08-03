@@ -388,7 +388,14 @@ public class SplashScreen extends CordovaPlugin {
                         progressBar.setIndeterminateTintList(colorStateList);
                     }
                 }
+                   
+                final WindowManager win = (WindowManager)webView.getContext().getSystemService(Context.WINDOW_SERVICE);
+                final Display display = win.getDefaultDisplay();
+                final Point size = new Point();
+                display.getRealSize(size);
 
+                progressBar.setPadding(0, (size.y / 2), 0, 0);
+                   
                 centeredLayout.addView(progressBar);
 
                 spinnerDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
